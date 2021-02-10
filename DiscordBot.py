@@ -20,21 +20,8 @@ bot = commands.Bot(command_prefix="politicsBot.")
 mostRecentSenateBill = list(congress.bills.introduced('senate', congress=117)['bills'][0].values())
 mostRecentHouseBill = list(congress.bills.introduced('house', congress=117)['bills'][0].values())
 
-senateInfo = {'Title' : mostRecentSenateBill[3], 
-              'Details' : mostRecentSenateBill[5], 
-              'Chamber' : "Senate", 
-              'Sponsor' : mostRecentSenateBill[7] + " " + mostRecentSenateBill[9] + " " + mostRecentSenateBill[11] + " - " + mostRecentSenateBill[10], 
-              'BillTracker' : mostRecentSenateBill[15], 
-              'DateIntroduced' : mostRecentSenateBill[16]
-             }
-
-houseInfo = {'Title' : mostRecentHouseBill[3], 
-             'Details' : mostRecentHouseBill[5], 
-             'Chamber' : "House of Representatives", 
-             'Sponsor' : mostRecentHouseBill[7] + " " + mostRecentHouseBill[9] + " " + mostRecentHouseBill[11] + " - " + mostRecentHouseBill[10], 
-             'BillTracker' : mostRecentHouseBill[15], 
-             'DateIntroduced' : mostRecentHouseBill[16]
-            }
+senateBillComparison = {'Title' : mostRecentSenateBill[3], 'Details' : mostRecentSenateBill[5], 'Chamber' : "Senate", 'Sponsor' : mostRecentSenateBill[7] + " " + mostRecentSenateBill[9] + " " + mostRecentSenateBill[11] + " - " + mostRecentSenateBill[10], 'BillTracker' : mostRecentSenateBill[15], 'DateIntroduced' : mostRecentSenateBill[16]}
+houseBillComparison = {'Title' : mostRecentHouseBill[3], 'Details' : mostRecentHouseBill[5], 'Chamber' : "House of Representatives", 'Sponsor' : mostRecentHouseBill[7] + " " + mostRecentHouseBill[9] + " " + mostRecentHouseBill[11] + " - " + mostRecentHouseBill[10], 'BillTracker' : mostRecentHouseBill[15], 'DateIntroduced' : mostRecentHouseBill[16]}
 
 def writeToFile(fileName, data):
     with open(fileName, 'w') as file:
@@ -74,8 +61,8 @@ async def on_ready():
 @bot.command(name = "update")
 async def update(ctx):
 
-    updateBoolSenate = compareSenateData(senateInfo)
-    updateBoolHouse = compareHouseData(houseInfo)
+    updateBoolSenate = compareSenateData(senateBillComparison)
+    updateBoolHouse = compareHouseData(houseBillComparison)
 
     if(updateBoolHouse == False and updateBoolSenate == False):
         await ctx.send("No new bills have been introduced.")
@@ -88,7 +75,7 @@ async def update(ctx):
                     "\nDetails: " + mostRecentSenateBill[5] +
                     "\nChamber: " + "Senate" + 
                     "\nSponsor: " + mostRecentSenateBill[7] + " " + mostRecentSenateBill[9] + " " + mostRecentSenateBill[11] + " - " + mostRecentSenateBill[10] +
-                    "\nBill Tracker: " + mostRecentSenateBill[15] + 
+                    "\nBillTracker: " + mostRecentSenateBill[15] + 
                     "\nDate Introduced: " + mostRecentSenateBill[16]
                     )
         await ctx.send(response)
@@ -101,16 +88,14 @@ async def update(ctx):
                     "\nDetails: " + mostRecentHouseBill[5] +
                     "\nChamber: " + "House of Representatives" + 
                     "\nSponsor: " + mostRecentHouseBill[7] + " " + mostRecentHouseBill[9] + " " + mostRecentHouseBill[11] + " - " + mostRecentHouseBill[10] +
-                    "\nBill Tracker: " + mostRecentHouseBill[15] + 
+                    "\nBillTracker: " + mostRecentHouseBill[15] + 
                     "\nDate Introduced: " + mostRecentHouseBill[16]
                     )
         await ctx.send(response)
 
-
-
-@bot.event
-async def on_member_join(member):
-    await member.create_dm()
-    await member.dm_channel.send(f"Hi {member.name}, welcome to NJIT's Science and Politics Society! If you haven't already, be sure to register on our Highlander Hub page found in our Important Links channel. Also, be sure to follow our naming convention (First name, Last Initial) as it allows for easier attendance tracking (https://rebrand.ly/discordShortener). Thanks!")
+@bot.command()
+async def DM(ctx, user: discord.User, *, message=None):
+    message = (f"Hi {discord.User.name}, welcome to NJIT's Science and Politics Society! If you haven't already, be sure to register on our Highlander Hub page found in our Important Links channel. Also, be sure to follow our naming convention (First name, Last Initial) as it allows for easier attendance tracking (https://rebrand.ly/discordShortener). Thanks!")
+    await user.send(message)
 
 bot.run(DISCORD_TOKEN)
