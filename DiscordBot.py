@@ -20,8 +20,21 @@ bot = commands.Bot(command_prefix="politicsBot.")
 mostRecentSenateBill = list(congress.bills.introduced('senate', congress=117)['bills'][0].values())
 mostRecentHouseBill = list(congress.bills.introduced('house', congress=117)['bills'][0].values())
 
-senateInfo = {'Title' : mostRecentSenateBill[3], 'Details' : mostRecentSenateBill[5], 'Chamber' : "Senate", 'Sponsor' : mostRecentSenateBill[7] + " " + mostRecentSenateBill[9] + " " + mostRecentSenateBill[11] + " - " + mostRecentSenateBill[10], 'BillTracker' : mostRecentSenateBill[15], 'DateIntroduced' : mostRecentSenateBill[16]}
-houseInfo = {'Title' : mostRecentHouseBill[3], 'Details' : mostRecentHouseBill[5], 'Chamber' : "House of Representatives", 'Sponsor' : mostRecentHouseBill[7] + " " + mostRecentHouseBill[9] + " " + mostRecentHouseBill[11] + " - " + mostRecentHouseBill[10], 'BillTracker' : mostRecentHouseBill[15], 'DateIntroduced' : mostRecentHouseBill[16]}
+senateInfo = {'Title' : mostRecentSenateBill[3], 
+              'Details' : mostRecentSenateBill[5], 
+              'Chamber' : "Senate", 
+              'Sponsor' : mostRecentSenateBill[7] + " " + mostRecentSenateBill[9] + " " + mostRecentSenateBill[11] + " - " + mostRecentSenateBill[10], 
+              'BillTracker' : mostRecentSenateBill[15], 
+              'DateIntroduced' : mostRecentSenateBill[16]
+             }
+
+houseInfo = {'Title' : mostRecentHouseBill[3], 
+             'Details' : mostRecentHouseBill[5], 
+             'Chamber' : "House of Representatives", 
+             'Sponsor' : mostRecentHouseBill[7] + " " + mostRecentHouseBill[9] + " " + mostRecentHouseBill[11] + " - " + mostRecentHouseBill[10], 
+             'BillTracker' : mostRecentHouseBill[15], 
+             'DateIntroduced' : mostRecentHouseBill[16]
+            }
 
 def writeToFile(fileName, data):
     with open(fileName, 'w') as file:
