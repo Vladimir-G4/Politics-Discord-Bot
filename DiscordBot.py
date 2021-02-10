@@ -88,7 +88,7 @@ async def update(ctx):
                     "\nDetails: " + mostRecentSenateBill[5] +
                     "\nChamber: " + "Senate" + 
                     "\nSponsor: " + mostRecentSenateBill[7] + " " + mostRecentSenateBill[9] + " " + mostRecentSenateBill[11] + " - " + mostRecentSenateBill[10] +
-                    "\nBillTracker: " + mostRecentSenateBill[15] + 
+                    "\nBill Tracker: " + mostRecentSenateBill[15] + 
                     "\nDate Introduced: " + mostRecentSenateBill[16]
                     )
         await ctx.send(response)
@@ -101,7 +101,7 @@ async def update(ctx):
                     "\nDetails: " + mostRecentHouseBill[5] +
                     "\nChamber: " + "House of Representatives" + 
                     "\nSponsor: " + mostRecentHouseBill[7] + " " + mostRecentHouseBill[9] + " " + mostRecentHouseBill[11] + " - " + mostRecentHouseBill[10] +
-                    "\nBillTracker: " + mostRecentHouseBill[15] + 
+                    "\nBill Tracker: " + mostRecentHouseBill[15] + 
                     "\nDate Introduced: " + mostRecentHouseBill[16]
                     )
         await ctx.send(response)
