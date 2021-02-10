@@ -75,7 +75,7 @@ async def update(ctx):
                     "\nDetails: " + senateBillComparison.get('Details') +
                     "\nChamber: " + senateBillComparison.get('Chamber') + 
                     "\nSponsor: " + senateBillComparison.get('Sponsor') +
-                    "\nBillTracker: " + senateBillComparison.get('BillTracker') + 
+                    "\nBill Tracker: " + senateBillComparison.get('BillTracker') + 
                     "\nDate Introduced: " + senateBillComparison.get('DateIntroduced')
                     )
         await ctx.send(response)
@@ -88,7 +88,7 @@ async def update(ctx):
                     "\nDetails: " + houseBillComparison.get('Details') +
                     "\nChamber: " + houseBillComparison.get('Chamber') + 
                     "\nSponsor: " + houseBillComparison.get('Sponsor') +
-                    "\nBillTracker: " + houseBillComparison.get('BillTracker') + 
+                    "\nBill Tracker: " + houseBillComparison.get('BillTracker') + 
                     "\nDate Introduced: " + houseBillComparison.get('DateIntroduced')
                     )
         await ctx.send(response)
