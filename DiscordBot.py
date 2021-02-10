@@ -14,7 +14,6 @@ API_KEY = os.getenv('API_KEY')
 DISCORD_TOKEN = os.getenv('DISCORD_TOKEN')
 
 congress = Congress(API_KEY)
-pelosi = congress.members.get('P000197')
 
 bot = commands.Bot(command_prefix="politicsBot.")
 
@@ -23,9 +22,6 @@ mostRecentHouseBill = list(congress.bills.introduced('house', congress=117)['bil
 
 senateInfo = {'Title' : mostRecentSenateBill[3], 'Details' : mostRecentSenateBill[5], 'Chamber' : "Senate", 'Sponsor' : mostRecentSenateBill[7] + " " + mostRecentSenateBill[9] + " " + mostRecentSenateBill[11] + " - " + mostRecentSenateBill[10], 'BillTracker' : mostRecentSenateBill[15], 'DateIntroduced' : mostRecentSenateBill[16]}
 houseInfo = {'Title' : mostRecentHouseBill[3], 'Details' : mostRecentHouseBill[5], 'Chamber' : "House of Representatives", 'Sponsor' : mostRecentHouseBill[7] + " " + mostRecentHouseBill[9] + " " + mostRecentHouseBill[11] + " - " + mostRecentHouseBill[10], 'BillTracker' : mostRecentHouseBill[15], 'DateIntroduced' : mostRecentHouseBill[16]}
-
-newHouseBill = False
-newSenateBill = False
 
 def writeToFile(fileName, data):
     with open(fileName, 'w') as file:
