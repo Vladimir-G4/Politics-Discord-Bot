@@ -77,7 +77,7 @@ async def update(ctx):
     updateBoolSenate = compareSenateData(senateInfo)
     updateBoolHouse = compareHouseData(houseInfo)
 
-    if(updateBoolHouse == False & updateBoolSenate == False):
+    if(updateBoolHouse == False and updateBoolSenate == False):
         await ctx.send("No new bills have been introduced.")
     
     if(updateBoolSenate == True):
