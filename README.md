@@ -9,7 +9,7 @@ This bot writes to the (NJIT) Science and Politics Society's Discord server. It 
 
 ## License
 
-    Copyright 2020 Vladimir Gutierrez
+    Copyright 2021 Vladimir Gutierrez
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
