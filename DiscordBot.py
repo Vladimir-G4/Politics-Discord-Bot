@@ -71,25 +71,25 @@ async def update(ctx):
         senateBill = readFile("senate.JSON")
         response = ("----------------------------------------\n" +
                     "A bill has been introduced in the Senate!"+
-                    "\nTitle: " + mostRecentSenateBill[3] +
-                    "\nDetails: " + mostRecentSenateBill[5] +
-                    "\nChamber: " + "Senate" + 
-                    "\nSponsor: " + mostRecentSenateBill[7] + " " + mostRecentSenateBill[9] + " " + mostRecentSenateBill[11] + " - " + mostRecentSenateBill[10] +
-                    "\nBillTracker: " + mostRecentSenateBill[15] + 
-                    "\nDate Introduced: " + mostRecentSenateBill[16]
+                    "\nTitle: " + senateBillComparison.get('Title') +
+                    "\nDetails: " + senateBillComparison.get('Details') +
+                    "\nChamber: " + senateBillComparison.get('Chamber') + 
+                    "\nSponsor: " + senateBillComparison.get('Sponsor') +
+                    "\nBillTracker: " + senateBillComparison.get('BillTracker') + 
+                    "\nDate Introduced: " + senateBillComparison.get('DateIntroduced')
                     )
         await ctx.send(response)
     
     if(updateBoolHouse == True):
         houseBill = readFile("house.JSON")
         response = ("----------------------------------------\n" + 
-                    "A bill has been introduced in the House!"+
-                    "\nTitle: " + mostRecentHouseBill[3] +
-                    "\nDetails: " + mostRecentHouseBill[5] +
-                    "\nChamber: " + "House of Representatives" + 
-                    "\nSponsor: " + mostRecentHouseBill[7] + " " + mostRecentHouseBill[9] + " " + mostRecentHouseBill[11] + " - " + mostRecentHouseBill[10] +
-                    "\nBillTracker: " + mostRecentHouseBill[15] + 
-                    "\nDate Introduced: " + mostRecentHouseBill[16]
+                    "A bill has been introduced in the Senate!"+
+                    "\nTitle: " + houseBillComparison.get('Title') +
+                    "\nDetails: " + houseBillComparison.get('Details') +
+                    "\nChamber: " + houseBillComparison.get('Chamber') + 
+                    "\nSponsor: " + houseBillComparison.get('Sponsor') +
+                    "\nBillTracker: " + houseBillComparison.get('BillTracker') + 
+                    "\nDate Introduced: " + houseBillComparison.get('DateIntroduced')
                     )
         await ctx.send(response)
 
