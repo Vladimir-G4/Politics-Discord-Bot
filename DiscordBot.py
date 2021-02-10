@@ -68,7 +68,6 @@ async def update(ctx):
         await ctx.send("No new bills have been introduced.")
     
     if(updateBoolSenate == True):
-        senateBill = readFile("senate.JSON")
         response = ("----------------------------------------\n" +
                     "A bill has been introduced in the Senate!"+
                     "\nTitle: " + senateBillComparison.get('Title') +
@@ -81,7 +80,6 @@ async def update(ctx):
         await ctx.send(response)
     
     if(updateBoolHouse == True):
-        houseBill = readFile("house.JSON")
         response = ("----------------------------------------\n" + 
                     "A bill has been introduced in the Senate!"+
                     "\nTitle: " + houseBillComparison.get('Title') +
