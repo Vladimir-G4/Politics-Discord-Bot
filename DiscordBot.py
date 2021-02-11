@@ -17,11 +17,11 @@ congress = Congress(API_KEY)
 
 bot = commands.Bot(command_prefix="politicsBot.")
 
-mostRecentSenateBill = list(congress.bills.introduced('senate', congress=117)['bills'][0].values())
-mostRecentHouseBill = list(congress.bills.introduced('house', congress=117)['bills'][0].values())
+rawSenateData = list(congress.bills.introduced('senate', congress=117)['bills'][0].values())
+rawHouseData = list(congress.bills.introduced('house', congress=117)['bills'][0].values())
 
-senateBillComparison = {'Title' : mostRecentSenateBill[3], 'Details' : mostRecentSenateBill[5], 'Chamber' : "Senate", 'Sponsor' : mostRecentSenateBill[7] + " " + mostRecentSenateBill[9] + " " + mostRecentSenateBill[11] + " - " + mostRecentSenateBill[10], 'BillTracker' : mostRecentSenateBill[15], 'DateIntroduced' : mostRecentSenateBill[16]}
-houseBillComparison = {'Title' : mostRecentHouseBill[3], 'Details' : mostRecentHouseBill[5], 'Chamber' : "House of Representatives", 'Sponsor' : mostRecentHouseBill[7] + " " + mostRecentHouseBill[9] + " " + mostRecentHouseBill[11] + " - " + mostRecentHouseBill[10], 'BillTracker' : mostRecentHouseBill[15], 'DateIntroduced' : mostRecentHouseBill[16]}
+mostRecentSenateBill = {'Title' : rawSenateData[3], 'Details' : rawSenateData[5], 'Chamber' : "Senate", 'Sponsor' : rawSenateData[7] + " " + rawSenateData[9] + " " + rawSenateData[11] + " - " + rawSenateData[10], 'BillTracker' : rawSenateData[15], 'DateIntroduced' : rawSenateData[16]}
+mostRecentHouseBill = {'Title' : rawHouseData[3], 'Details' : rawHouseData[5], 'Chamber' : "House of Representatives", 'Sponsor' : rawHouseData[7] + " " + rawHouseData[9] + " " + rawHouseData[11] + " - " + rawHouseData[10], 'BillTracker' : rawHouseData[15], 'DateIntroduced' : rawHouseData[16]}
 
 def writeToFile(fileName, data):
     with open(fileName, 'w') as file:
@@ -57,37 +57,38 @@ def compareSenateData(data):
 async def on_ready():
     print(f'{bot.user.name} has connected to Discord!')
 
-
 @bot.command(name = "update")
 async def update(ctx):
 
-    updateBoolSenate = compareSenateData(senateBillComparison)
-    updateBoolHouse = compareHouseData(houseBillComparison)
+    updateBoolSenate = compareSenateData(mostRecentSenateBill)
+    updateBoolHouse = compareHouseData(mostRecentHouseBill)
 
     if(updateBoolHouse == False and updateBoolSenate == False):
         await ctx.send("No new bills have been introduced.")
     
     if(updateBoolSenate == True):
+        senateBill = readFile("senate.JSON")
         response = ("----------------------------------------\n" +
                     "A bill has been introduced in the Senate!"+
-                    "\nTitle: " + senateBillComparison.get('Title') +
-                    "\nDetails: " + senateBillComparison.get('Details') +
-                    "\nChamber: " + senateBillComparison.get('Chamber') + 
-                    "\nSponsor: " + senateBillComparison.get('Sponsor') +
-                    "\nBill Tracker: " + senateBillComparison.get('BillTracker') + 
-                    "\nDate Introduced: " + senateBillComparison.get('DateIntroduced')
+                    "\nTitle: " + mostRecentSenateBill.get('Title') +
+                    "\nDetails: " + mostRecentSenateBill.get('Details') +
+                    "\nChamber: " + mostRecentSenateBill.get('Chamber') + 
+                    "\nSponsor: " + mostRecentSenateBill.get('Sponsor') +
+                    "\nBill Tracker: " + mostRecentSenateBill.get('BillTracker') + 
+                    "\nDate Introduced: " + mostRecentSenateBill.get('DateIntroduced')
                     )
         await ctx.send(response)
     
     if(updateBoolHouse == True):
+        houseBill = readFile("house.JSON")
         response = ("----------------------------------------\n" + 
                     "A bill has been introduced in the Senate!"+
-                    "\nTitle: " + houseBillComparison.get('Title') +
-                    "\nDetails: " + houseBillComparison.get('Details') +
-                    "\nChamber: " + houseBillComparison.get('Chamber') + 
-                    "\nSponsor: " + houseBillComparison.get('Sponsor') +
-                    "\nBill Tracker: " + houseBillComparison.get('BillTracker') + 
-                    "\nDate Introduced: " + houseBillComparison.get('DateIntroduced')
+                    "\nTitle: " + mostRecentHouseBill.get('Title') +
+                    "\nDetails: " + mostRecentHouseBill.get('Details') +
+                    "\nChamber: " + mostRecentHouseBill.get('Chamber') + 
+                    "\nSponsor: " + mostRecentHouseBill.get('Sponsor') +
+                    "\nBill Tracker: " + mostRecentHouseBill.get('BillTracker') + 
+                    "\nDate Introduced: " + mostRecentHouseBill.get('DateIntroduced')
                     )
         await ctx.send(response)
 
