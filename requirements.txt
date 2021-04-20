@@ -1,0 +1,4 @@
+discord
+flask
+python-congress
+python-dotenv
