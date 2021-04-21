@@ -3,9 +3,9 @@
 This bot writes to the (NJIT) Science and Politics Society's Discord server. It notifies members when a new bill is introduced to the Senate or the House of Representatives. Made using Python, the Discord API, and the Congress API.
 ---
 
-<img src="DiscordBotScreenShotOne.png?raw=true">
+<img src="images/DiscordBotScreenShotOne.png?raw=true">
 
-<img src="DiscordBotScreenShotTwo.png?raw=true">
+<img src="images/DiscordBotScreenShotTwo.png?raw=true">
 
 ## License
 
