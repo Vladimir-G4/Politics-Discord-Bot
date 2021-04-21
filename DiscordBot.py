@@ -86,6 +86,7 @@ async def autoUpdate(channel):
     
     global bot
     channel = bot.get_channel(channel)
+    bot.run(DISCORD_TOKEN)
 
     updateBoolSenate = compareSenateData(senateBillComparison)
     updateBoolHouse = compareHouseData(houseBillComparison)
