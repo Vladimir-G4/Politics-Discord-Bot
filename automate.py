@@ -3,4 +3,4 @@ from time import sleep
 import asyncio
 
 time.sleep(5)
-asyncio.run(update(781536635481096213, "send"))
+asyncio.run(autoUpdate(781536635481096213))
