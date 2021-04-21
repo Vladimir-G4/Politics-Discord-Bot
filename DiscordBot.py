@@ -16,6 +16,7 @@ keep_alive()
 
 API_KEY = os.getenv('API_KEY')
 DISCORD_TOKEN = os.getenv('DISCORD_TOKEN')
+CHANNEL_ID = 781536635481096213
 
 congress = Congress(API_KEY)
 
@@ -82,10 +83,11 @@ async def on_ready():
     await bot.change_presence(activity=discord.Game(
         name="Politics Simulator 2021"))
     
-async def autoUpdate(channel_id):
+async def autoUpdate():
     
     global bot
-    channel = bot.get_channel(channel_id)
+    global CHANNEL_ID
+    channel = bot.get_channel(CHANNEL_ID)
 
     updateBoolSenate = compareSenateData(senateBillComparison)
     updateBoolHouse = compareHouseData(houseBillComparison)
