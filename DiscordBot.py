@@ -85,6 +85,7 @@ async def on_ready():
 async def autoUpdate(channel):
     
     global bot
+    global DISCORD_TOKEN
     channel = bot.get_channel(channel)
     bot.run(DISCORD_TOKEN)
 
