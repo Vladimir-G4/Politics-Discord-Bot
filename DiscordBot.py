@@ -82,12 +82,10 @@ async def on_ready():
     await bot.change_presence(activity=discord.Game(
         name="Politics Simulator 2021"))
     
-async def autoUpdate(channel):
+async def autoUpdate(channel_id):
     
     global bot
-    global DISCORD_TOKEN
-    channel = bot.get_channel(channel)
-    bot.run(DISCORD_TOKEN)
+    channel = bot.get_channel(channel_id)
 
     updateBoolSenate = compareSenateData(senateBillComparison)
     updateBoolHouse = compareHouseData(houseBillComparison)
