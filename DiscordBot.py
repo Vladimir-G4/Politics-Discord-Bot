@@ -159,6 +159,7 @@ async def DM(ctx, user: discord.User, *, message=None):
         f"Hi {user.name}, welcome to NJIT's Science and Politics Society! If you haven't already, be sure to register on our Highlander Hub page found in our Important Links channel. Also, be sure to follow our naming convention (First name, Last Initial) as it allows for easier attendance tracking (https://rebrand.ly/discordShortener). Thanks!"
     )
     await user.send(message)
+    await bot.delete(ctx.message)
 
 
 bot.run(DISCORD_TOKEN)
