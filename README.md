@@ -1,6 +1,6 @@
 # Politics Bot for Discord
 
-This bot writes to the (NJIT) Science and Politics Society's Discord server. It notifies members when a new bill is introduced to the Senate or the House of Representatives. Made using Python, the Discord API, and the Congress API.
+This bot writes to the (NJIT) Science and Politics Society's Discord server. It notifies members when a new bill is introduced to the Senate or the House of Representatives. Made using Python, the Discord API, the Congress API, Heroku, and Flask.
 ---
 
 <img src="images/DiscordBotScreenShotOne.png?raw=true">
