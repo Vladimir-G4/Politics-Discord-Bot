@@ -1,1 +1,1 @@
-web: gunicorn app:Discordbot
+web: gunicorn app:DiscordBot
