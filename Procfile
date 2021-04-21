@@ -1,1 +1,1 @@
-web: gunicorn DiscordBot:application
+web: gunicorn keep_alive:application
