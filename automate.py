@@ -1,6 +1,6 @@
-from DiscordBot import update
+from DiscordBot import autoUpdate
 from time import sleep
 import asyncio
 
-time.sleep(5)
+sleep(5)
 asyncio.run(autoUpdate(781536635481096213))
