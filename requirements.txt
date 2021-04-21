@@ -4,4 +4,4 @@ gunicorn
 python-congress
 python-dotenv
 gevent
-trio
+asyncio
