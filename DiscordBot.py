@@ -152,7 +152,8 @@ async def update(ctx):
                     "\nDate Introduced: " +
                     houseBillComparison.get('DateIntroduced'))
         await ctx.send(response)
-        await ctx.message.delete()
+    
+    await ctx.message.delete()
 
 @bot.command()
 async def DM(ctx, user: discord.User, *, message=None):
