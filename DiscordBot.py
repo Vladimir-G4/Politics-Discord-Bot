@@ -82,7 +82,7 @@ async def on_ready():
     await bot.change_presence(activity=discord.Game(
         name="Politics Simulator 2021"))
     
-async def update(channel, msg):
+async def autoUpdate(channel):
     
     global bot
     channel = bot.get_channel(channel)
