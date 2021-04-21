@@ -152,53 +152,10 @@ async def update(ctx):
                     houseBillComparison.get('DateIntroduced'))
         await ctx.send(response)
 
-
-async def self_update(ctx):
-    while True:
-        updateBoolSenate = compareSenateData(senateBillComparison)
-        updateBoolHouse = compareHouseData(houseBillComparison)
-
-        if (updateBoolHouse == False and updateBoolSenate == False):
-            print("No new bills have been introduced.")
-
-        if (updateBoolSenate == True):
-            response = ("----------------------------------------\n" +
-                        "A bill has been introduced in the Senate!" +
-                        "\nTitle: " + senateBillComparison.get('Title') +
-                        "\nDetails: " + senateBillComparison.get('Details') +
-                        "\nChamber: " + senateBillComparison.get('Chamber') +
-                        "\nSponsor: " + senateBillComparison.get('Sponsor') +
-                        "\nBill Tracker: " +
-                        senateBillComparison.get('BillTracker') +
-                        "\nDate Introduced: " +
-                        senateBillComparison.get('DateIntroduced'))
-            await ctx.send(response)
-
-        if (updateBoolHouse == True):
-            response = ("----------------------------------------\n" +
-                        "A bill has been introduced in the House!" +
-                        "\nTitle: " + houseBillComparison.get('Title') +
-                        "\nDetails: " + houseBillComparison.get('Details') +
-                        "\nChamber: " + houseBillComparison.get('Chamber') +
-                        "\nSponsor: " + houseBillComparison.get('Sponsor') +
-                        "\nBill Tracker: " +
-                        houseBillComparison.get('BillTracker') +
-                        "\nDate Introduced: " +
-                        houseBillComparison.get('DateIntroduced'))
-            await ctx.send(response)
-
-        await asyncio.sleep(60 * 30)
-
-
-@bot.command()
-async def auto_run(ctx):
-    bot.loop.create_task(self_update(ctx))
-
-
 @bot.command()
 async def DM(ctx, user: discord.User, *, message=None):
     message = (
-        f"Hi {discord.User.name}, welcome to NJIT's Science and Politics Society! If you haven't already, be sure to register on our Highlander Hub page found in our Important Links channel. Also, be sure to follow our naming convention (First name, Last Initial) as it allows for easier attendance tracking (https://rebrand.ly/discordShortener). Thanks!"
+        f"Hi {user.name}, welcome to NJIT's Science and Politics Society! If you haven't already, be sure to register on our Highlander Hub page found in our Important Links channel. Also, be sure to follow our naming convention (First name, Last Initial) as it allows for easier attendance tracking (https://rebrand.ly/discordShortener). Thanks!"
     )
     await user.send(message)
 
