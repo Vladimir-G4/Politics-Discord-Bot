@@ -1,1 +1,1 @@
-web: gunicorn keep_alive:application
+worker: python DiscordBot.py
