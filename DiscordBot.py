@@ -81,6 +81,41 @@ async def on_ready():
 
     await bot.change_presence(activity=discord.Game(
         name="Politics Simulator 2021"))
+    
+async def update(channel):
+    
+    global bot
+    channel = bot.get_channel(channel)
+
+    updateBoolSenate = compareSenateData(senateBillComparison)
+    updateBoolHouse = compareHouseData(houseBillComparison)
+
+    if (updateBoolHouse == False and updateBoolSenate == False):
+        await channel.send("No new bills have been introduced.")
+
+    if (updateBoolSenate == True):
+        response = ("----------------------------------------\n" +
+                    "A bill has been introduced in the Senate!" + "\nTitle: " +
+                    senateBillComparison.get('Title') + "\nDetails: " +
+                    senateBillComparison.get('Details') + "\nChamber: " +
+                    senateBillComparison.get('Chamber') + "\nSponsor: " +
+                    senateBillComparison.get('Sponsor') + "\nBill Tracker: " +
+                    senateBillComparison.get('BillTracker') +
+                    "\nDate Introduced: " +
+                    senateBillComparison.get('DateIntroduced'))
+        await channel.send(response)
+
+    if (updateBoolHouse == True):
+        response = ("----------------------------------------\n" +
+                    "A bill has been introduced in the House!" + "\nTitle: " +
+                    houseBillComparison.get('Title') + "\nDetails: " +
+                    houseBillComparison.get('Details') + "\nChamber: " +
+                    houseBillComparison.get('Chamber') + "\nSponsor: " +
+                    houseBillComparison.get('Sponsor') + "\nBill Tracker: " +
+                    houseBillComparison.get('BillTracker') +
+                    "\nDate Introduced: " +
+                    houseBillComparison.get('DateIntroduced'))
+        await channel.send(response)
 
 
 @bot.command(name="update")
