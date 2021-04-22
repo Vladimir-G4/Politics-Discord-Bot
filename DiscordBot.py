@@ -94,7 +94,7 @@ async def autoUpdate():
 
     if (updateBoolHouse == False and updateBoolSenate == False):
         response = "No new bills have been introduced."
-        bot.send_message(channel, response)
+        bot.send(channel, response)
 
     if (updateBoolSenate == True):
         response = ("----------------------------------------\n" +
@@ -106,7 +106,7 @@ async def autoUpdate():
                     senateBillComparison.get('BillTracker') +
                     "\nDate Introduced: " +
                     senateBillComparison.get('DateIntroduced'))
-        bot.send_message(channel, response)
+        bot.send(channel, response)
 
     if (updateBoolHouse == True):
         response = ("----------------------------------------\n" +
@@ -118,7 +118,7 @@ async def autoUpdate():
                     houseBillComparison.get('BillTracker') +
                     "\nDate Introduced: " +
                     houseBillComparison.get('DateIntroduced'))
-        bot.send_message(channel, response)
+        bot.send(channel, response)
 
 
 @bot.command(name="update")
