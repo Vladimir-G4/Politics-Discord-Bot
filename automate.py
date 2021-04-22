@@ -4,4 +4,4 @@ import asyncio
 
 time.sleep(3)
 loop = asyncio.new_event_loop()
-loop.run(autoUpdate())
+loop.run_until_complete(autoUpdate())
